@@ -53,8 +53,8 @@ class TextScramble {
 
 
 const phrases = [
-'Nong Van Nguyen,',
-'Dep Trai',
+'Nông Thái Thuận',
+'Đẹp Trai',
 'Vjp Pro',
 'Security',
 '&',
@@ -63,7 +63,7 @@ const phrases = [
 'Ethical Hacking \ { * }',
 'an initiative to help secure the Cyber',
 'by Nong Van Nguyen',
-'@nvn2004'];
+'@ntt2009'];
 
 
 const el = document.querySelector('.text-change');
