@@ -53,8 +53,8 @@ class TextScramble {
 
 
 const phrases = [
-'Nông Thái Thuận',
-'Đẹp Trai',
+'Nong Thai Thuan',
+'Đep Trai',
 'Vjp Pro',
 'Security',
 '&',
