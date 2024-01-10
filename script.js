@@ -62,7 +62,7 @@ const phrases = [
 '&',
 'Ethical Hacking \ { * }',
 'an initiative to help secure the Cyber',
-'by Nong Van Nguyen',
+'by Nong Thai Thuan',
 '@ntt2009'];
 
 
